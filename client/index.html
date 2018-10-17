@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+    <title>MarketsAvChecker</title>
+</head>
+
+<body>
+<div class="container">
+    <div class="input-group">
+        ​<textarea id="txtArea" rows="10" cols="70" id="textArea"></textarea>
+        <div class="btn-container">
+             <span class="input-group-btn">
+              <button class="btn btn-default" type="button" id="sendButton">GO!</button>
+        </span>
+            <span class="input-group-btn">
+            <a href="x" class="btn btn-default" download="download.xls" id="btnExport">Экспорт в Excel</a>
+        </span>
+            <span class="input-group-btn">
+             <button class="btn btn-default" type="button" id="clearTextAreaButton">X</button>
+        </span>
+
+        </div>
+
+    </div>
+    <div id="dvData">
+        <table class="table table-striped table-bordered" id="tbl">
+            <thead>
+            <tr>
+                <th class="col-md-1">Link</th>
+                <th class="col-md-3">Name</th>
+                <th class="col-md-2">Price</th>
+                <th class="col-md-2">Availability</th>
+                <th class="col-md-1">Purchased</th>
+            </tr>
+            </thead>
+            <tbody id="tBody">
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

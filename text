@@ -40,3 +40,11 @@
     "webpack-dev-server": "^2.5.0"
   }
 */
+
+
+
+ <th class="col-md-1" id="amountTh">Бюджет</th>
+                <th class="col-md-3" id="nameTh">Название тендера</th>
+                <th class="col-md-1" id="statusTh">Статус</th>
+                <th class="col-md-1" id="pDate">Дата публикации/ТД</th>
+                <th class="col-md-1" id="aDate">Дата аукциона</th>

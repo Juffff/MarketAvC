@@ -1,0 +1,73 @@
+.container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+}
+
+#txtArea{
+    width: 100%;
+}
+
+.input-group{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.btn-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+
+.input-group-btn{
+    width: 30%;
+}
+
+.btn {
+    width: 100%;
+}
+
+#tbl{
+    width: 100%;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+}
+
+
+.table > thead > tr{
+    background-color: black;
+    color: white;
+}
+
+.href{
+    cursor: pointer;
+    color: blue;
+}
+
+ul{
+    padding: 2px;
+    list-style-type: none;
+}
+.btn{
+    background-color: blue;
+    color: snow;
+}
+
+.table>thead>tr>th
+{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    cursor: pointer;
+}
+
+#dvData{
+    width: 100%;
+}
