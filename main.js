@@ -57,7 +57,14 @@ app.use(bodyParser.json());
 app.post('/parse', (req, res) => {
     const data = req.body.data;
     if(Array.isArray(data)){
+        /*Promise.all([p1, p2, p3]).then(values => {
+            console.log(values);
+        });*/
+        Promise.all(data.map(el => requester(el))).then(data => console.log(data));
 
+      //  data.map(el => requester(el).then(data => console.log(data)));
+      //  Promise.all().then(data => console.log(data));
+        res.send({'dd':'OO'});
     } else {
         const url = req.body.data;
         console.log(url);
