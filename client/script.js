@@ -1,15 +1,9 @@
 window.onload = () => {
 
-    /* function getList(callback) {
-         // const server = 'http://localhost:8080/tenders';
-         const server = 'https://prozorroanalytics.herokuapp.com/tenders';
-         fetch(server)
-             .then(response => response.json())
-             .then(json => {
-                 callback(json);
-             })
-             .catch(console.log);
-     }*/
+    String.prototype.replaceAll = function(target, replacement) {
+        return this.split(target).join(replacement);
+    };
+
     function clearTable() {
         document.getElementById('tBody').innerHTML = '';
     }
@@ -17,24 +11,20 @@ window.onload = () => {
     const sendButton = document.getElementById('sendButton');
     const txtArea = document.getElementById('txtArea');
     const clearTextAreaButton = document.getElementById('clearTextAreaButton');
-    //txtArea.value = 'https://www.ebay.com/itm/Imagine-by-Rubies-DC-Superheroes-Harley-Quinn-Mallet-Costume/123366092297?ssPageName=STRK%3AMEBIDX%3AIT&_trksid=p2057872.m2749.l2649&shqty=1#shIdhttps://www.ebay.com/itm/Imagine-by-Rubies-DC-Superheroes-Harley-Quinn-Mallet-Costume/123366092297?ssPageName=STRK%3AMEBIDX%3AIT&_trksid=p2057872.m2749.l2649&shqty=1#shIdhttps://www.ebay.com/itm/Imagine-by-Rubies-DC-Superheroes-Harley-Quinn-Mallet-Costume/123366092297?ssPageName=STRK%3AMEBIDX%3AIT&_trksid=p2057872.m2749.l2649&shqty=1#shId';
-
-
 
     clearTextAreaButton.addEventListener('click', () => {
        txtArea.value = '';
     });
 
     sendButton.addEventListener('click', () => {
+        clearTable();
         let links = txtArea.value.replaceAll('http://','').replaceAll('https://','').split('www.').join('#;#http://www.').replaceAll(/\n/g, '').split('#;#');
         if(links.length > 1){
             links.splice(0, 1);
+            links.forEach(el => {
+                sendRequest(el);
+            });
         }
-        if(links.length === 1){
-            links = links[0];
-        }
-        JSON.stringify({data: links});
-        sendRequest(links);
     });
 
     function sendRequest(data) {
@@ -47,11 +37,33 @@ window.onload = () => {
             },
             body: JSON.stringify({data: data})
         }).then(res=>res.json())
-            .then(res => console.log(res));
-
+            .then(res => {
+                createTr(res, document.getElementById('tBody'));
+            });
     }
 
-    String.prototype.replaceAll = function(target, replacement) {
-        return this.split(target).join(replacement);
+    const createTd = (data) => {
+        const el = document.createElement('td');
+        el.innerHTML = data;
+        return el;
     };
+
+    const createTr = (data, tBody) => {
+        const tr = document.createElement('tr');
+        console.log(tr);
+        const urlTd = createTd(data.url);
+        const name = createTd(data.name);
+        const price = createTd(data.price);
+        const availability = createTd(data.availability);
+        const purchased = createTd(data.purchased);
+        tr.appendChild(urlTd);
+        tr.appendChild(name);
+        tr.appendChild(price);
+        tr.appendChild(availability);
+        tr.appendChild(purchased);
+
+        tBody.appendChild(tr);
+    };
+
+
 };
